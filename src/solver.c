@@ -56,12 +56,12 @@ bool numero_vuoto(unsigned char (*problem)[9][9],int *riga, int *colonna){
 int risoluzione(unsigned char (*problem)[9][9]){
         int riga;
         int colonna;
-        if(!numero_vuoto(&(*problem), &riga, &colonna)){
+        if(!numero_vuoto(problem, &riga, &colonna)){
             int num; 
             for (num=1;num<=9;num=num+1){
-                if (check_riga(&(*problem),riga, num, colonna) && check_colonna(problem,colonna,num, riga) && check_box(problem,colonna,num,riga)){
+                if (check_riga(problem,riga, num, colonna) && check_colonna(problem,colonna,num, riga) && check_box(problem,colonna,num,riga)){
                     (*problem)[riga][colonna]=num;
-                    if (risoluzione(&(*problem))){
+                    if (risoluzione(problem)){
                         return 1;
                     }
                     (*problem)[riga][colonna]=0;
@@ -73,5 +73,5 @@ int risoluzione(unsigned char (*problem)[9][9]){
         }
 
 void solve(unsigned char (*problem)[9][9]){
-    risoluzione(&(*problem));
+    risoluzione(problem);
 }
